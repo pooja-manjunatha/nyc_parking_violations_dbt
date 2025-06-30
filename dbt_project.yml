@@ -1,0 +1,42 @@
+name: 'nyc_parking_violations'
+version: '1.0.0'
+config-version: 2
+
+profile: 'nyc_parking_violations'
+
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+seeds:
+  nyc_parking_violations:
+    +all_varchar: true
+    parking_violations_issued_fiscal_year_2023_sample:
+      +column_types:
+        Summons Number: string
+
+models:
+  nyc_parking_violations:
+    +schema: "{{ target.schema }}"
+    example:
+      +materialized: ephemeral
+    bronze:
+      +materialized: view
+    silver:
+      silver_parking_violation_codes:
+        +materialized: ephemeral
+      silver_parking_violations:
+        +materialized: ephemeral
+      silver_violation_tickets:
+        +materialized: view
+      silver_violation_vehicles:
+        +materialized: view
+    gold:
+      +materialized: table

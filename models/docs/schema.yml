@@ -1,0 +1,61 @@
+version: 2
+
+models:
+  - name: bronze_parking_violation_codes
+    description: Initial dataset listing parking violation codes along with their definitions and corresponding penalty amounts.
+    columns:
+      - name: code
+        description: '{{ doc("code") }}'
+      - name: definition
+        description: '{{ doc("definition") }}'
+      - name: manhattan_below_96
+        description: '{{ doc("manhattan_below_96") }}'
+      - name: all_other_areas
+        description: '{{ doc("all_other_areas") }}'
+
+  - name: bronze_parking_violations
+    description: Raw dataset of issued parking violations in 2023.
+    columns:
+      - name: summons_number
+        description: '{{ doc("summons_number") }}'
+        tests:
+          - not_null
+          - unique
+      - name: registration_state
+        description: '{{ doc("registration_state") }}'
+      - name: plate_type
+        description: '{{ doc("plate_type") }}'
+      - name: issue_date
+        description: '{{ doc("issue_date") }}'
+      - name: code
+        description: '{{ doc("code") }}'
+      - name: vehicle_body_type
+        description: '{{ doc("vehicle_body_type") }}'
+      - name: vehicle_make
+        description: '{{ doc("vehicle_make") }}'
+      - name: issuing_agency
+        description: '{{ doc("issuing_agency") }}'
+      - name: vehicle_expiration_date
+        description: '{{ doc("vehicle_expiration_date") }}'
+      - name: violation_location
+        description: '{{ doc("violation_location") }}'
+      - name: violation_precinct
+        description: '{{ doc("violation_precinct") }}'
+      - name: issuer_precinct
+        description: '{{ doc("issuer_precinct") }}'
+      - name: issuer_code
+        description: '{{ doc("issuer_code") }}'
+      - name: issuer_command
+        description: '{{ doc("issuer_command") }}'
+      - name: issuer_squad
+        description: '{{ doc("issuer_squad") }}'
+      - name: violation_time
+        description: '{{ doc("violation_time") }}'
+      - name: violation_county
+        description: '{{ doc("violation_county") }}'
+      - name: violation_legal_code
+        description: '{{ doc("violation_legal_code") }}'
+      - name: vehicle_color
+        description: '{{ doc("vehicle_color") }}'
+      - name: vehicle_year
+        description: '{{ doc("vehicle_year") }}'

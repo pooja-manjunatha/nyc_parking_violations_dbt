@@ -1,0 +1,13 @@
+nyc_parking_violations:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: /Users/poojamanjunatha/Downloads/dbt-parking-violations/nyc_parking_violations.duckdb
+      threads: 1
+      schema: main
+    prod:
+      type: duckdb
+      path: /Users/poojamanjunatha/Downloads/dbt-parking-violations/production_parking_violations.duckdb
+      threads: 4
+      schema: main
